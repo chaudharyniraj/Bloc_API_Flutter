@@ -1,4 +1,5 @@
-import 'package:api_bloc_flutter/Manager/user_manager.dart';
+import 'package:api_bloc_flutter/Manager/manager.dart';
+import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 import 'package:bloc/bloc.dart';
 
@@ -6,19 +7,26 @@ import 'api_event.dart';
 import 'api_state.dart';
 
 class ApiBloc extends Bloc<ApiEvent, ApiState> {
-  final UserManager _userManager;
-  ApiBloc(this._userManager) : super(InitialState()) {
-    on<ApiEvent>((event, emit) async {
+  final Manager _manager;
+  // final ResourceManager _resourceManager;
+
+  ApiBloc(this._manager) : super(InitialState()) {
+    on<UserEvent>((event, emit) async {
       try {
         // final model = await _userManager.getUserData();
-        List<UserModel> datas = await _userManager.getUserData();
+        List<UserModel> datas = await _manager.getUserData();
         emit(UserLoadedState(userData: datas));
       } catch (e) {
-        emit(UserErrorState(message: e.toString()));
+        emit(ErrorState(message: e.toString()));
       }
     });
-    // on<UserEvent>((event, emit) {
-    //   // emit(UserState(uData: ));
-    // });
+    on<ResourceEvent>((event, emit) async {
+      try {
+        List<ResourceModel> datas = await _manager.getResourceData();
+        emit(ResourcesLoadedState(resourceData: datas));
+      } catch (e) {
+        emit(ErrorState(message: e.toString()));
+      }
+    });
   }
 }

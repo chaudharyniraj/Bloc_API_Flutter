@@ -1,8 +1,8 @@
-import 'package:api_bloc_flutter/widget/user_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'Manager/user_manager.dart';
+import 'Manager/manager.dart';
+import 'widget/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: RepositoryProvider(
-            create: (_) => UserManager(), child: const UserWidget())
+            create: (_) => Manager(), child: const HomePage())
         // BlocProvider<ApiBloc>(
         //     create: (context) => ApiBloc(), child: const MyHomePage()),
         );

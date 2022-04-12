@@ -5,3 +5,5 @@ abstract class ApiEvent {}
 
 // ignore: must_be_immutable
 class UserEvent extends ApiEvent {}
+
+class ResourceEvent extends ApiEvent {}

@@ -1,20 +1,20 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:api_bloc_flutter/Model/user_model.dart';
+import 'resource_model.dart';
 
-class UserDataModel {
+class ResourceHeaderModel {
   late int page;
   late int perPage;
   late int total;
   late int totalPages;
-  late List<UserModel> datas;
+  late List<ResourceModel> resourceDatas;
 
-  UserDataModel({
+  ResourceHeaderModel({
     required this.page,
     required this.perPage,
     required this.total,
     required this.totalPages,
-    required this.datas,
+    required this.resourceDatas,
   });
 
   static const String k_page = "page";
@@ -23,15 +23,15 @@ class UserDataModel {
   static const String k_totalPages = "total_pages";
   static const String k_data = "data";
 
-  UserDataModel.fromJson(Map<String, dynamic> json) {
+  ResourceHeaderModel.fromJson(Map<String, dynamic> json) {
     page = json[k_page];
     perPage = json[k_perpage];
     total = json[k_total];
     totalPages = json[k_totalPages];
     if (json[k_data] != null) {
-      datas = <UserModel>[];
-      json[k_data].forEach((v) {
-        datas.add(UserModel.fromJson(v));
+      resourceDatas = <ResourceModel>[];
+      json[k_data].forEach((value) {
+        resourceDatas.add(ResourceModel.fromJson(value));
       });
     }
   }

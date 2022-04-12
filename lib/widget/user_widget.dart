@@ -4,7 +4,7 @@ import 'package:api_bloc_flutter/bloc/api_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../Manager/user_manager.dart';
+import '../Manager/manager.dart';
 import '../bloc/api_event.dart';
 
 class UserWidget extends StatelessWidget {
@@ -13,21 +13,17 @@ class UserWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('User Information')),
-      body: SafeArea(
-        child: BlocProvider<ApiBloc>(
-          create: (context) =>
-              ApiBloc(RepositoryProvider.of<UserManager>(context))
-                ..add(UserEvent()),
-          child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {
-            if (state is UserErrorState) {
-              return Text(state.message);
-            } else if (state is UserLoadedState) {
-              return buildUserInfoWidget(state.userData);
-            }
-            return const CircularProgressIndicator();
-          })),
-        ),
+      body: BlocProvider<ApiBloc>(
+        create: (context) =>
+            ApiBloc(RepositoryProvider.of<Manager>(context))..add(UserEvent()),
+        child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {
+          if (state is ErrorState) {
+            return Text(state.message);
+          } else if (state is UserLoadedState) {
+            return buildUserInfoWidget(state.userData);
+          }
+          return const Center(child: CircularProgressIndicator());
+        })),
       ),
     );
   }
