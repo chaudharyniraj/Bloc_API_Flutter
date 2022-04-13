@@ -4,7 +4,6 @@ import 'package:api_bloc_flutter/bloc/api_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../Manager/manager.dart';
 import '../bloc/api_event.dart';
 
 class UserWidget extends StatelessWidget {
@@ -14,8 +13,7 @@ class UserWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<ApiBloc>(
-        create: (context) =>
-            ApiBloc(RepositoryProvider.of<Manager>(context))..add(UserEvent()),
+        create: (context) => ApiBloc()..add(UserEvent()),
         child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {
           if (state is ErrorState) {
             return Text(state.message);

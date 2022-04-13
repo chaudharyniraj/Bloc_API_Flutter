@@ -25,3 +25,12 @@ class ResourcesLoadedState extends ApiState {
     required this.resourceData,
   });
 }
+
+class RegisterState extends ApiState {
+  String email;
+  String password;
+  RegisterState({
+    required this.email,
+    required this.password,
+  });
+}

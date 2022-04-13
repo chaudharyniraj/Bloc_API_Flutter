@@ -1,16 +1,17 @@
 import 'package:api_bloc_flutter/Manager/manager.dart';
 import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
+import 'package:api_bloc_flutter/Model/user_register_model.dart';
 import 'package:bloc/bloc.dart';
 
 import 'api_event.dart';
 import 'api_state.dart';
 
 class ApiBloc extends Bloc<ApiEvent, ApiState> {
-  final Manager _manager;
-  // final ResourceManager _resourceManager;
+  final Manager _manager = Manager();
+  UserRegisterModel uData = UserRegisterModel();
 
-  ApiBloc(this._manager) : super(InitialState()) {
+  ApiBloc() : super(InitialState()) {
     on<UserEvent>((event, emit) async {
       try {
         // final model = await _userManager.getUserData();
@@ -27,6 +28,16 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       } catch (e) {
         emit(ErrorState(message: e.toString()));
       }
+    });
+    on<RegisterEvent>((event, emit) async {
+      uData.email = event.email;
+      uData.password = event.password;
+      try {
+        await _manager.registerUser(uData);
+      } catch (e) {
+        emit(ErrorState(message: e.toString()));
+      }
+      RegisterState(email: event.email, password: event.password);
     });
   }
 }

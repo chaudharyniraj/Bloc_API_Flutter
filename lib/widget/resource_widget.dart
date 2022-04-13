@@ -2,7 +2,6 @@ import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../Manager/manager.dart';
 import '../bloc/api_bloc.dart';
 import '../bloc/api_event.dart';
 import '../bloc/api_state.dart';
@@ -14,8 +13,7 @@ class ResourceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<ApiBloc>(
-        create: (context) => ApiBloc(RepositoryProvider.of<Manager>(context))
-          ..add(ResourceEvent()),
+        create: (context) => ApiBloc()..add(ResourceEvent()),
         child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {
           if (state is ErrorState) {
             return Text(state.message);
@@ -42,9 +40,9 @@ class ResourceWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           return Container(
             alignment: Alignment.center,
-            // height: MediaQuery.of(context).size.height * 0.3,
             decoration: BoxDecoration(
-                color: Colors.grey, borderRadius: BorderRadius.circular(15)),
+                color: Colors.amberAccent,
+                borderRadius: BorderRadius.circular(15)),
             child: Column(
               children: [
                 Text(

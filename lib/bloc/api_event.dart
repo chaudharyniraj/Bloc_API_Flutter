@@ -1,9 +1,19 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:meta/meta.dart';
 
 @immutable
 abstract class ApiEvent {}
 
-// ignore: must_be_immutable
 class UserEvent extends ApiEvent {}
 
 class ResourceEvent extends ApiEvent {}
+
+class RegisterEvent extends ApiEvent {
+  String email;
+  String password;
+  RegisterEvent({
+    required this.email,
+    required this.password,
+  });
+}

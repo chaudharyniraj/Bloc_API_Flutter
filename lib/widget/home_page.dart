@@ -2,6 +2,8 @@ import 'package:api_bloc_flutter/widget/resource_widget.dart';
 import 'package:api_bloc_flutter/widget/user_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'register_widget.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -31,6 +33,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.book),
             label: 'Resource',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.login),
+            label: 'Register',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.green,
@@ -47,6 +53,9 @@ class _HomePageState extends State<HomePage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     UserWidget(),
-    ResourceWidget()
+    ResourceWidget(),
+    // BlocProvider<ApiBloc>(
+    //     create: (context) => ApiBloc(), child: RegisterWidget()),
+    RegisterWidget(),
   ];
 }
