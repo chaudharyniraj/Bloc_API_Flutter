@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:api_bloc_flutter/Model/response_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 
 import '../Model/resource_header_model.dart';
@@ -12,21 +12,17 @@ import '../Utils/base_url.dart';
 import '../Utils/server_utils.dart';
 
 class Manager extends BaseUrl {
-  Future<void> registerUser(UserRegisterModel uData) async {
+  Future<ResponseModel> registerUser(UserRegisterModel uData) async {
     String url = ServerUtils().getApiUrl(apiBaseUrl, "api/register");
     Map<String, String> headers = {"Content-type": "application/json"};
     String body = json.encode(uData.toMap());
     Response response =
         await post(Uri.parse(url), headers: headers, body: body);
     if (response.statusCode == 200) {
-      // ToastMessage().toastMessage();
-      print("Register sucesssful");
-      Fluttertoast.showToast(
-        msg: "Sucessfully registered",
-      );
-      print(response.body);
+      Map<String, dynamic> data = jsonDecode(response.body);
+      ResponseModel datas = ResponseModel.fromJson(data);
+      return datas;
     } else {
-      print("Register unsucesssful");
       throw Exception();
     }
   }
@@ -34,7 +30,7 @@ class Manager extends BaseUrl {
   Future<List<UserModel>> getUserData() async {
     String url = ServerUtils().getApiUrl(apiBaseUrl, "api/users?page=2");
     Response response = await get(Uri.parse(url));
-    // print(data);
+    print(response.statusCode);
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
       List<UserModel> datas = UserHeaderModel.fromJson(data).datas;
@@ -47,7 +43,6 @@ class Manager extends BaseUrl {
   Future<List<ResourceModel>> getResourceData() async {
     String url = ServerUtils().getApiUrl(apiBaseUrl, "api/unknown");
     Response response = await get(Uri.parse(url));
-    // print(data);
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
       List<ResourceModel> resourceDatas =
