@@ -29,10 +29,8 @@ class ResourcesLoadedState extends ApiState {
 class RegisterState extends ApiState {}
 
 class ResponseState extends ApiState {
-  String id;
   String token;
   ResponseState({
-    required this.id,
     required this.token,
   });
 }

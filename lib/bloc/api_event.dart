@@ -17,3 +17,5 @@ class RegisterEvent extends ApiEvent {
     required this.password,
   });
 }
+
+class ResponseEvent extends ApiEvent {}

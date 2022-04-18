@@ -7,10 +7,10 @@ class ResponseModel {
   static const String k_id = 'id';
   static const String k_token = 'token';
 
-  // Response({
-  //   required this.id,
-  //   required this.token,
-  // });
+  ResponseModel(
+    this.id,
+    this.token,
+  );
 
   Map<String, dynamic> toMap() => {
         k_id: id,

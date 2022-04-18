@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:api_bloc_flutter/Model/response_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 import 'package:http/http.dart';
 
@@ -12,7 +10,7 @@ import '../Utils/base_url.dart';
 import '../Utils/server_utils.dart';
 
 class Manager extends BaseUrl {
-  Future<ResponseModel> registerUser(UserRegisterModel uData) async {
+  Future<String> registerUser(UserRegisterModel uData) async {
     String url = ServerUtils().getApiUrl(apiBaseUrl, "api/register");
     Map<String, String> headers = {"Content-type": "application/json"};
     String body = json.encode(uData.toMap());
@@ -20,8 +18,8 @@ class Manager extends BaseUrl {
         await post(Uri.parse(url), headers: headers, body: body);
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
-      ResponseModel datas = ResponseModel.fromJson(data);
-      return datas;
+      String token = data['token'];
+      return token;
     } else {
       throw Exception();
     }
@@ -30,7 +28,6 @@ class Manager extends BaseUrl {
   Future<List<UserModel>> getUserData() async {
     String url = ServerUtils().getApiUrl(apiBaseUrl, "api/users?page=2");
     Response response = await get(Uri.parse(url));
-    print(response.statusCode);
     if (response.statusCode == 200) {
       Map<String, dynamic> data = jsonDecode(response.body);
       List<UserModel> datas = UserHeaderModel.fromJson(data).datas;

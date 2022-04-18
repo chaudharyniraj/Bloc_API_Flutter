@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:api_bloc_flutter/Manager/manager.dart';
 import 'package:api_bloc_flutter/Model/resource_model.dart';
-import 'package:api_bloc_flutter/Model/response_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 import 'package:api_bloc_flutter/Model/user_register_model.dart';
 import 'package:bloc/bloc.dart';
@@ -36,10 +35,9 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       uData.email = event.email;
       uData.password = event.password;
       try {
-        ResponseModel datas = await _manager.registerUser(uData);
-        emit(ResponseState(id: datas.id, token: datas.token));
-        log(datas.id);
-        log("Register sucesssful");
+        String token = await _manager.registerUser(uData);
+        log(token);
+        emit(ResponseState(token: token));
       } catch (e) {
         emit(ErrorState(message: e.toString()));
       }
