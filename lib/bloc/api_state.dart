@@ -1,3 +1,4 @@
+import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
 import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 
@@ -32,5 +33,12 @@ class ResponseState extends ApiState {
   String token;
   ResponseState({
     required this.token,
+  });
+}
+
+class MoviesLoadedState extends ApiState {
+  List<MoviesListModel> moviesData;
+  MoviesLoadedState({
+    required this.moviesData,
   });
 }

@@ -19,3 +19,5 @@ class RegisterEvent extends ApiEvent {
 }
 
 class ResponseEvent extends ApiEvent {}
+
+class MoviesEvent extends ApiEvent {}

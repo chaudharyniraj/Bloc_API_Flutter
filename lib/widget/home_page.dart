@@ -1,3 +1,4 @@
+import 'package:api_bloc_flutter/widget/movies_widget.dart';
 import 'package:api_bloc_flutter/widget/resource_widget.dart';
 import 'package:api_bloc_flutter/widget/user_widget.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +38,17 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.login),
             label: 'Register',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.movie),
+            label: 'Movies',
+          ),
         ],
         currentIndex: _selectedIndex,
+        backgroundColor: Colors.black,
         selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.deepOrangeAccent,
+        elevation: 0,
+        mouseCursor: SystemMouseCursors.grab,
         onTap: _onItemTapped,
       ),
     );
@@ -54,8 +63,7 @@ class _HomePageState extends State<HomePage> {
   static const List<Widget> _widgetOptions = <Widget>[
     UserWidget(),
     ResourceWidget(),
-    // BlocProvider<ApiBloc>(
-    //     create: (context) => ApiBloc(), child: RegisterWidget()),
     RegisterWidget(),
+    MoviesWidget(),
   ];
 }

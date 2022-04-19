@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:api_bloc_flutter/Manager/manager.dart';
+import 'package:api_bloc_flutter/Manager/movies_manager.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
 import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 import 'package:api_bloc_flutter/Model/user_register_model.dart';
@@ -11,6 +13,8 @@ import 'api_state.dart';
 
 class ApiBloc extends Bloc<ApiEvent, ApiState> {
   final Manager _manager = Manager();
+  final MoviesManager _moviesManager = MoviesManager();
+
   UserRegisterModel uData = UserRegisterModel();
 
   ApiBloc() : super(InitialState()) {
@@ -42,6 +46,16 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
         emit(ErrorState(message: e.toString()));
       }
       // RegisterState(email: event.email, password: event.password);
+    });
+
+    on<MoviesEvent>((event, emit) async {
+      try {
+        List<MoviesListModel> moviesDatas =
+            await _moviesManager.getMoviesList();
+        emit(MoviesLoadedState(moviesData: moviesDatas));
+      } catch (e) {
+        emit(ErrorState(message: e.toString()));
+      }
     });
   }
 }

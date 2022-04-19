@@ -102,7 +102,9 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             ),
             BlocBuilder<ApiBloc, ApiState>(
               builder: (context, state) {
-                if (state is ResponseState) {
+                if (state is ErrorState) {
+                  return Text(state.message);
+                } else if (state is ResponseState) {
                   return Center(
                     child: Text(
                       "Login Successful.\n"
@@ -110,15 +112,16 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                       style: const TextStyle(fontSize: 20, color: Colors.green),
                     ),
                   );
-                } else {
-                  return const Center(
-                    child: Text(
-                      "Loading...",
-                      style: TextStyle(fontSize: 20, color: Colors.red),
-                    ),
-                  );
                 }
-                // return Container();
+                // else {
+                //   return const Center(
+                //     child: Text(
+                //       "Loading...",
+                //       style: TextStyle(fontSize: 20, color: Colors.red),
+                //     ),
+                //   );
+                // }
+                return Container();
               },
             )
           ],
