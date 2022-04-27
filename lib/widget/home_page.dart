@@ -1,5 +1,5 @@
-import 'package:api_bloc_flutter/widget/movies_widget.dart';
 import 'package:api_bloc_flutter/widget/resource_widget.dart';
+import 'package:api_bloc_flutter/widget/tab_bar.dart';
 import 'package:api_bloc_flutter/widget/user_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -64,6 +64,6 @@ class _HomePageState extends State<HomePage> {
     UserWidget(),
     ResourceWidget(),
     RegisterWidget(),
-    MoviesWidget(),
+    TabbarWidget(),
   ];
 }

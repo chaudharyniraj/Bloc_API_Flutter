@@ -1,32 +1,33 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
+import 'package:api_bloc_flutter/Model/Movies_model/torrents_model.dart';
 
 class MoviesListModel {
   late int id;
-  late String url;
-  late String imdb_code;
-  late String title;
-  late String title_english;
-  late String title_long;
-  late String slug;
-  late int year;
-  late double rating;
-  late int runtime;
-  late List genres;
-  late String summary;
-  late String description_full;
-  late String synopsis;
-  late String yt_trailer_code;
-  late String language;
-  late String mpa_rating;
+  late String? url;
+  late String? imdb_code;
+  late String? title;
+  late String? title_english;
+  late String? title_long;
+  late String? slug;
+  late int? year;
+  late double? rating;
+  late int? runtime;
+  late List? genres;
+  late String? summary;
+  late String? description_full;
+  late String? synopsis;
+  late String? yt_trailer_code;
+  late String? language;
+  late String? mpa_rating;
   late String background_image;
   late String background_image_original;
   late String small_cover_image;
   late String medium_cover_image;
   late String large_cover_image;
-  late String state;
-  late List torrents;
-  late String date_uploaded;
-  late int date_uploaded_unix;
+  late String? state;
+  late List<TorrentModel> torrents;
+  late String? date_uploaded;
+  late int? date_uploaded_unix;
 
   MoviesListModel({
     required this.id,
@@ -93,7 +94,7 @@ class MoviesListModel {
     title_long = json[k_title_long];
     slug = json[k_slug];
     year = json[k_year];
-    rating = json[k_rating];
+    rating = json[k_rating].toDouble();
     runtime = json[k_runtime];
     genres = json[k_genres];
     summary = json[k_summary];
@@ -108,7 +109,13 @@ class MoviesListModel {
     medium_cover_image = json[k_medium_cover_image];
     large_cover_image = json[k_large_cover_image];
     state = json[k_state];
-    torrents = json[k_torrents];
+    // torrents = json[k_torrents];
+    if (json[k_torrents] != null) {
+      torrents = <TorrentModel>[];
+      json[k_torrents].forEach((value) {
+        torrents.add(TorrentModel.fromJson(value));
+      });
+    }
     date_uploaded = json[k_date_uploaded];
     date_uploaded_unix = json[k_date_uploaded_unix];
   }

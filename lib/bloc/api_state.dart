@@ -42,3 +42,17 @@ class MoviesLoadedState extends ApiState {
     required this.moviesData,
   });
 }
+
+class Movies3DLoadedState extends ApiState {
+  List<MoviesListModel> moviesData3D;
+  Movies3DLoadedState({
+    required this.moviesData3D,
+  });
+}
+
+class MovieDetailsState extends ApiState {
+  Map<String, dynamic> movieDetails;
+  MovieDetailsState({
+    required this.movieDetails,
+  });
+}
