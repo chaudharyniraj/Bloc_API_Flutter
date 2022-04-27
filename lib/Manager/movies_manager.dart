@@ -30,7 +30,6 @@ class MoviesManager extends MoviesBaseUrl {
     if (response.statusCode == 200) {
       Map<String, dynamic> datas = jsonDecode(response.body);
       Map<String, dynamic> data = datas['data']['movie'];
-
       return data;
     } else {
       throw Exception();

@@ -12,6 +12,9 @@ class UserWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('User Information'),
+      ),
       body: BlocProvider<ApiBloc>(
         create: (context) => ApiBloc()..add(UserEvent()),
         child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {

@@ -61,6 +61,7 @@ class ApiBloc extends Bloc<ApiEvent, ApiState> {
       try {
         Map<String, dynamic> movieDetails =
             await _moviesManager.getMovieDetails(id);
+
         emit(MovieDetailsState(movieDetails: movieDetails));
       } catch (e) {
         emit(ErrorState(message: e.toString()));

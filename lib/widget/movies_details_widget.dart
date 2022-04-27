@@ -1,3 +1,4 @@
+import 'package:api_bloc_flutter/bloc/api_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,16 +10,21 @@ class MoviesDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ApiBloc, ApiState>(
-      builder: ((context, state) {
-        if (state is ErrorState) {
-          return Text(state.message);
-        } else if (state is MovieDetailsState) {
-          // return const Text("data");
-          return buildMovieDetailsWidget(context, state.movieDetails);
-        }
-        return const Center(child: CircularProgressIndicator());
-      }),
+    return Scaffold(
+      body: BlocProvider(
+        create: (_) => ApiBloc(),
+        child: BlocBuilder<ApiBloc, ApiState>(
+          builder: ((context, state) {
+            if (state is ErrorState) {
+              return Text(state.message);
+            } else if (state is MovieDetailsState) {
+              // return const Text("data");
+              return buildMovieDetailsWidget(context, state.movieDetails);
+            }
+            return const Center(child: CircularProgressIndicator());
+          }),
+        ),
+      ),
     );
   }
 }

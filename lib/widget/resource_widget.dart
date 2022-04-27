@@ -12,6 +12,9 @@ class ResourceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Colors Information'),
+      ),
       body: BlocProvider<ApiBloc>(
         create: (context) => ApiBloc()..add(ResourceEvent()),
         child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {
