@@ -1,12 +1,12 @@
+import 'package:api_bloc_flutter/Presentation/widget/movies3D_widget.dart';
+import 'package:api_bloc_flutter/Presentation/widget/suggested_movies_widget.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_list_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/suggested_movies_bloc.dart';
-import 'package:api_bloc_flutter/widget/movies3D_widget.dart';
-import 'package:api_bloc_flutter/widget/suggested_movies_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/api_event.dart';
-import '../bloc/movies_bloc.dart/movies3D_bloc.dart';
+import '../../bloc/api_event.dart';
+import '../../bloc/movies_bloc.dart/movies3D_bloc.dart';
 import 'movies_list_widget.dart';
 
 class MoviesWidget extends StatefulWidget {

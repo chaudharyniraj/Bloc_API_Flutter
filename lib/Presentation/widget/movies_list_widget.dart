@@ -1,12 +1,13 @@
-import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
+import 'package:api_bloc_flutter/Presentation/widget/movies_details_widget.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_event.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_list_bloc.dart';
-import 'package:api_bloc_flutter/widget/movies_details_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/api_state.dart';
+import '../../bloc/api_state.dart';
 
 class MoviesListWidget extends StatelessWidget {
   const MoviesListWidget({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class MoviesListWidget extends StatelessWidget {
   }
 
   buildMovieListWidget(BuildContext context, state) {
-    List<MoviesListModel> moviesData = state.moviesData;
+    List<MoviesModel> moviesData = state.moviesData;
     // TextStyle _textStyleHeader = const TextStyle(
     //     fontSize: 25, fontWeight: FontWeight.bold, color: Colors.deepOrange);
     return ListView.builder(

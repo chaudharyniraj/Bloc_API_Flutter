@@ -2,8 +2,8 @@ import 'package:api_bloc_flutter/bloc/api_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/api_bloc.dart';
-import '../bloc/api_event.dart';
+import '../../bloc/api_bloc.dart';
+import '../../bloc/api_event.dart';
 
 class RegisterWidget extends StatefulWidget {
   const RegisterWidget({Key? key}) : super(key: key);

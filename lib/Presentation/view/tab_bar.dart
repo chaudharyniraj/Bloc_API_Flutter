@@ -1,5 +1,6 @@
-import 'package:api_bloc_flutter/widget/movies3D_widget.dart';
-import 'package:api_bloc_flutter/widget/movies_list_widget.dart';
+import 'package:api_bloc_flutter/Presentation/widget/movies3D_widget.dart';
+import 'package:api_bloc_flutter/Presentation/widget/movies_list_widget.dart';
+
 import 'package:flutter/material.dart';
 
 class TabbarWidget extends StatelessWidget {

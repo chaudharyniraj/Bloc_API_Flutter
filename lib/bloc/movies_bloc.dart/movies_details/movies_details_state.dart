@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
 import 'package:meta/meta.dart';
 
 @immutable
@@ -16,7 +16,7 @@ class ErrorsState extends MoviesState {
 }
 
 class MovieDetailsState extends MoviesState {
-  MoviesListModel movieDetails;
+  MoviesModel movieDetails;
   MovieDetailsState({
     required this.movieDetails,
   });

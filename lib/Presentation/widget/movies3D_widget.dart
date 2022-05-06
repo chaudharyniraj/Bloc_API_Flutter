@@ -1,13 +1,14 @@
 // ignore_for_file: file_names
+import 'package:api_bloc_flutter/Presentation/widget/movies_details_widget.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies3D_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_event.dart';
-import 'package:api_bloc_flutter/widget/movies_details_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../Model/Movies_model/movies_list_model.dart';
+import '../../Model/Movies_model/movies_model.dart';
 
-import '../bloc/api_state.dart';
+import '../../bloc/api_state.dart';
 
 class Movies3DWidget extends StatelessWidget {
   const Movies3DWidget({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class Movies3DWidget extends StatelessWidget {
   }
 }
 
-buildMovie3DListWidget(BuildContext context, List<MoviesListModel> moviesData) {
+buildMovie3DListWidget(BuildContext context, List<MoviesModel> moviesData) {
   return ListView.builder(
       itemCount: moviesData.length,
       scrollDirection: Axis.horizontal,

@@ -2,9 +2,9 @@ import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/api_bloc.dart';
-import '../bloc/api_event.dart';
-import '../bloc/api_state.dart';
+import '../../bloc/api_bloc.dart';
+import '../../bloc/api_event.dart';
+import '../../bloc/api_state.dart';
 
 class ResourceWidget extends StatelessWidget {
   const ResourceWidget({Key? key}) : super(key: key);

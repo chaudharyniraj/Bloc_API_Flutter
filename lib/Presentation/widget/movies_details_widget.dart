@@ -1,4 +1,4 @@
-import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_state.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class MoviesDetailsWidget extends StatelessWidget {
   }
 }
 
-buildMovieDetailsWidget(BuildContext context, MoviesListModel movieDetails) {
+buildMovieDetailsWidget(BuildContext context, MoviesModel movieDetails) {
   TextStyle _textStyleInsideStack = const TextStyle(
       color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16);
   TextStyle _textStyleOutsideStack = const TextStyle(

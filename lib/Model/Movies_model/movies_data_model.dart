@@ -1,12 +1,12 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
-import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
 
 class MoviesDataModel {
   late int movie_count;
   late int limit;
   late int page_number;
-  late List<MoviesListModel> movies;
+  late List<MoviesModel> movies;
 
   MoviesDataModel({
     required this.movie_count,
@@ -25,9 +25,9 @@ class MoviesDataModel {
     limit = json[k_limit];
     page_number = json[k_page_number];
     if (json[k_movies] != null) {
-      movies = <MoviesListModel>[];
+      movies = <MoviesModel>[];
       json[k_movies].forEach((value) {
-        movies.add(MoviesListModel.fromJson(value));
+        movies.add(MoviesModel.fromJson(value));
       });
     }
   }

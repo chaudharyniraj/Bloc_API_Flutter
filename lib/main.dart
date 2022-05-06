@@ -1,8 +1,7 @@
+import 'package:api_bloc_flutter/Presentation/view/home_page.dart';
 import 'package:api_bloc_flutter/bloc/api_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'widget/home_page.dart';
 
 void main() {
   runApp(const MyApp());

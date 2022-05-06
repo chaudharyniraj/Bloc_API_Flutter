@@ -1,9 +1,9 @@
-import 'package:api_bloc_flutter/widget/movies_widget.dart';
-import 'package:api_bloc_flutter/widget/resource_widget.dart';
+import 'package:api_bloc_flutter/Presentation/view/user_widget.dart';
+import 'package:api_bloc_flutter/Presentation/widget/movies_widget.dart';
+import 'package:api_bloc_flutter/Presentation/widget/register_widget.dart';
+import 'package:api_bloc_flutter/Presentation/widget/resource_widget.dart';
 
-import 'package:api_bloc_flutter/widget/user_widget.dart';
 import 'package:flutter/material.dart';
-import 'register_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
