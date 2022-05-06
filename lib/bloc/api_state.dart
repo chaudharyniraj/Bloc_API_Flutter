@@ -1,4 +1,5 @@
 import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_model.dart';
 import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 
@@ -50,9 +51,9 @@ class Movies3DLoadedState extends ApiState {
   });
 }
 
-class MovieDetailsState extends ApiState {
-  Map<String, dynamic> movieDetails;
-  MovieDetailsState({
-    required this.movieDetails,
+class SuggestedMoviesLoadedState extends ApiState {
+  List<SuggestedMoviesModel> suggestedMoviesData3;
+  SuggestedMoviesLoadedState({
+    required this.suggestedMoviesData3,
   });
 }

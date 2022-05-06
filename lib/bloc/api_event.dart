@@ -22,11 +22,6 @@ class ResponseEvent extends ApiEvent {}
 
 class MoviesEvent extends ApiEvent {}
 
-class MovieDetailsEvent extends ApiEvent {
-  int id;
-  MovieDetailsEvent({
-    required this.id,
-  });
-}
-
 class MoviesEvent3D extends ApiEvent {}
+
+class SuggestedMoviesEvent extends ApiEvent {}

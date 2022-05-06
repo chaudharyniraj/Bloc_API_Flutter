@@ -1,7 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, constant_identifier_names
+
 import 'package:api_bloc_flutter/Model/Movies_model/torrents_model.dart';
 
-class MoviesListModel {
+class SuggestedMoviesModel {
   late int? id;
   late String? url;
   late String? imdb_code;
@@ -23,13 +24,12 @@ class MoviesListModel {
   late String background_image_original;
   late String small_cover_image;
   late String medium_cover_image;
-  late String large_cover_image;
   late String? state;
   late List<TorrentModel> torrents;
   late String? date_uploaded;
   late int? date_uploaded_unix;
 
-  MoviesListModel({
+  SuggestedMoviesModel({
     required this.id,
     required this.url,
     required this.imdb_code,
@@ -51,7 +51,6 @@ class MoviesListModel {
     required this.background_image_original,
     required this.small_cover_image,
     required this.medium_cover_image,
-    required this.large_cover_image,
     required this.state,
     required this.torrents,
     required this.date_uploaded,
@@ -79,13 +78,12 @@ class MoviesListModel {
   static const String k_background_image_original = "background_image_original";
   static const String k_small_cover_image = "small_cover_image";
   static const String k_medium_cover_image = "medium_cover_image";
-  static const String k_large_cover_image = "large_cover_image";
   static const String k_state = "state";
   static const String k_torrents = "torrents";
   static const String k_date_uploaded = "date_uploaded";
   static const String k_date_uploaded_unix = "date_uploaded_unix";
 
-  MoviesListModel.fromJson(Map<String, dynamic> json) {
+  SuggestedMoviesModel.fromJson(Map<String, dynamic> json) {
     id = json[k_id];
     url = json[k_url];
     imdb_code = json[k_imdb_code];
@@ -107,9 +105,7 @@ class MoviesListModel {
     background_image_original = json[k_background_image_original];
     small_cover_image = json[k_small_cover_image];
     medium_cover_image = json[k_medium_cover_image];
-    large_cover_image = json[k_large_cover_image];
     state = json[k_state];
-    // torrents = json[k_torrents];
     if (json[k_torrents] != null) {
       torrents = <TorrentModel>[];
       json[k_torrents].forEach((value) {

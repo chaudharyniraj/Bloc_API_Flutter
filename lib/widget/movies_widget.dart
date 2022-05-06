@@ -1,109 +1,64 @@
-import 'package:api_bloc_flutter/Model/Movies_model/movies_list_model.dart';
-import 'package:api_bloc_flutter/bloc/api_event.dart';
+import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_list_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies_bloc.dart/suggested_movies_bloc.dart';
+import 'package:api_bloc_flutter/widget/movies3D_widget.dart';
+import 'package:api_bloc_flutter/widget/suggested_movies_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/api_bloc.dart';
-import '../bloc/api_state.dart';
+import '../bloc/api_event.dart';
+import '../bloc/movies_bloc.dart/movies3D_bloc.dart';
+import 'movies_list_widget.dart';
 
-class MoviesWidget extends StatelessWidget {
+class MoviesWidget extends StatefulWidget {
   const MoviesWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocProvider<ApiBloc>(
-        create: (context) => ApiBloc()..add(MoviesEvent()),
-        child: BlocBuilder<ApiBloc, ApiState>(builder: ((context, state) {
-          if (state is ErrorState) {
-            return Text(state.message);
-          } else if (state is MoviesLoadedState) {
-            return buildMovieListWidget(context, state);
-          }
-          return const Center(child: CircularProgressIndicator());
-        })),
-      ),
-    );
+  State<MoviesWidget> createState() => _MoviesWidgetState();
+}
+
+class _MoviesWidgetState extends State<MoviesWidget> {
+  final MoviesListBloc moviesListBloc = MoviesListBloc();
+  final Movies3DBloc movies3dBloc = Movies3DBloc();
+  final SuggestedMoviesBloc suggestedMoviesBloc = SuggestedMoviesBloc();
+  @override
+  void initState() {
+    suggestedMoviesBloc.add(SuggestedMoviesEvent());
+    moviesListBloc.add(MoviesEvent());
+    movies3dBloc.add(MoviesEvent3D());
+    super.initState();
   }
 
-  buildMovieListWidget(BuildContext context, state) {
-    List<MoviesListModel> moviesData = state.moviesData;
+  @override
+  Widget build(BuildContext context) {
     TextStyle _textStyle = const TextStyle(
-        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black);
-    TextStyle _textStyleHeader = const TextStyle(
-        fontSize: 25, fontWeight: FontWeight.bold, color: Colors.deepOrange);
-    return ListView.builder(
-        itemCount: moviesData.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: GestureDetector(
-              onTap: () {
-                BlocProvider.of<ApiBloc>(context, listen: false)
-                    .add(MovieDetailsEvent(id: moviesData[index].id));
-                // const MoviesDetailsWidget();
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                //     builder: (BuildContext context) =>
-                //         const MoviesDetailsWidget()));
-              },
-              child: Container(
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(15)),
-                child: Row(
-                  children: [
-                    Stack(
-                      children: [
-                        SizedBox(
-                          height: 200,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  moviesData[index].medium_cover_image),
-                              fit: BoxFit.fitHeight,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          moviesData[index].rating.toString(),
-                          style: _textStyleHeader,
-                        )
-                      ],
-                    ),
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              moviesData[index].title.toString(),
-                              style: _textStyleHeader,
-                            ),
-                            Text(
-                              "Year : ${moviesData[index].year.toString()}",
-                              style: _textStyle,
-                            ),
-                            Text(
-                              "Language : ${moviesData[index].language}",
-                              style: _textStyle,
-                            ),
-                            Text(
-                              "Generes : ${moviesData[index].genres}",
-                              style: _textStyle,
-                            ),
-                            Text(
-                              "runtime : ${moviesData[index].runtime}",
-                              style: _textStyle,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+        fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blueAccent);
+    return Scaffold(
+      body: SafeArea(
+          child: MultiBlocProvider(
+        providers: [
+          BlocProvider<SuggestedMoviesBloc>(
+              create: (context) => suggestedMoviesBloc),
+          BlocProvider<MoviesListBloc>(create: (context) => moviesListBloc),
+          BlocProvider<Movies3DBloc>(create: (_) => movies3dBloc),
+        ],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Expanded(child: SuggectedMoviesWidget()),
+            Text(
+              'List of Movies',
+              style: _textStyle,
             ),
-          );
-        });
+            const Expanded(child: MoviesListWidget()),
+            Text(
+              'List of 3D Movies',
+              style: _textStyle,
+            ),
+            const Expanded(child: Movies3DWidget())
+          ],
+        ),
+      )),
+    );
   }
 }
