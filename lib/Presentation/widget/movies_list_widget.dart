@@ -1,13 +1,12 @@
 import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
 import 'package:api_bloc_flutter/Presentation/widget/movies_details_widget.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_bloc.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_event.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_list_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_event.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies_list/movies_list_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies_list/movies_list_state.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/api_state.dart';
 
 class MoviesListWidget extends StatelessWidget {
   const MoviesListWidget({Key? key}) : super(key: key);
@@ -15,8 +14,9 @@ class MoviesListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<MoviesListBloc, ApiState>(builder: ((context, state) {
-        if (state is ErrorState) {
+      body: BlocBuilder<MoviesListBloc, MoviesListState>(
+          builder: ((context, state) {
+        if (state is MovieListErrorsState) {
           return Text(state.message);
         } else if (state is MoviesLoadedState) {
           return buildMovieListWidget(context, state);

@@ -1,5 +1,5 @@
 import 'package:api_bloc_flutter/bloc/api_state.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/suggested_movies_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/suggested_movies_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

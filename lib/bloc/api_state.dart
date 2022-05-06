@@ -37,13 +37,6 @@ class ResponseState extends ApiState {
   });
 }
 
-class MoviesLoadedState extends ApiState {
-  List<MoviesModel> moviesData;
-  MoviesLoadedState({
-    required this.moviesData,
-  });
-}
-
 class Movies3DLoadedState extends ApiState {
   List<MoviesModel> moviesData3D;
   Movies3DLoadedState({

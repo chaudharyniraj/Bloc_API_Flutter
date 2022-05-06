@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 import 'package:api_bloc_flutter/Presentation/widget/movies_details_widget.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies3D_bloc.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_bloc.dart';
-import 'package:api_bloc_flutter/bloc/movies_bloc.dart/movies_details/movies_details_event.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies3D_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_event.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
