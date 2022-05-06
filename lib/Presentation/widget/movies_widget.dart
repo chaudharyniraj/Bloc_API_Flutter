@@ -1,13 +1,13 @@
 import 'package:api_bloc_flutter/Presentation/widget/movies3D_widget.dart';
 import 'package:api_bloc_flutter/Presentation/widget/suggested_movies_widget.dart';
-import 'package:api_bloc_flutter/bloc/movies/movies3D_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies3D/movies3D_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies3D/movies3D_event.dart';
 import 'package:api_bloc_flutter/bloc/movies/movies_list/movies_list_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies/movies_list/movies_list_event.dart';
-import 'package:api_bloc_flutter/bloc/movies/suggested_movies_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/suggested_movies/suggested_movies_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/suggested_movies/suggested_movies_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/api_event.dart';
 
 import 'movies_list_widget.dart';
 
@@ -24,7 +24,7 @@ class _MoviesWidgetState extends State<MoviesWidget> {
   final SuggestedMoviesBloc suggestedMoviesBloc = SuggestedMoviesBloc();
   @override
   void initState() {
-    suggestedMoviesBloc.add(SuggestedMoviesEvent());
+    suggestedMoviesBloc.add(SuggestedMoviesLoadedEvent());
     moviesListBloc.add(MoviesEvent());
     movies3dBloc.add(MoviesEvent3D());
     super.initState();

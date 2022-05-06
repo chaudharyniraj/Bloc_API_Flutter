@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'package:api_bloc_flutter/Presentation/widget/movies_details_widget.dart';
-import 'package:api_bloc_flutter/bloc/movies/movies3D_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies3D/movies3D_bloc.dart';
+import 'package:api_bloc_flutter/bloc/movies/movies3D/movies3D_state.dart';
 import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_bloc.dart';
 import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_event.dart';
 
@@ -8,16 +9,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../Model/Movies_model/movies_model.dart';
 
-import '../../bloc/api_state.dart';
-
 class Movies3DWidget extends StatelessWidget {
   const Movies3DWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<Movies3DBloc, ApiState>(builder: ((context, state) {
-        if (state is ErrorState) {
+      body:
+          BlocBuilder<Movies3DBloc, Movies3DState>(builder: ((context, state) {
+        if (state is Movie3DErrorsState) {
           return Text(state.message);
         } else if (state is Movies3DLoadedState) {
           // return const Text("data");

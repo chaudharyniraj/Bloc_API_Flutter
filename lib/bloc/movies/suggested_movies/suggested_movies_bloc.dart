@@ -1,10 +1,11 @@
 import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_model.dart';
-import 'package:api_bloc_flutter/bloc/api_event.dart';
-import 'package:api_bloc_flutter/bloc/api_state.dart';
+import 'package:api_bloc_flutter/bloc/movies/suggested_movies/suggested_movies_event.dart';
+import 'package:api_bloc_flutter/bloc/movies/suggested_movies/suggested_movies_state.dart';
 import 'package:bloc/bloc.dart';
-import '../../UrlManager/movies_manager.dart';
+import '../../../UrlManager/movies_manager.dart';
 
-class SuggestedMoviesBloc extends Bloc<ApiEvent, ApiState> {
+class SuggestedMoviesBloc
+    extends Bloc<SuggestedMoviesEvent, SuggestedMoviesState> {
   final MoviesManager _moviesManager = MoviesManager();
   SuggestedMoviesBloc() : super(InitialState()) {
     on<SuggestedMoviesEvent>((event, emit) async {
@@ -14,7 +15,7 @@ class SuggestedMoviesBloc extends Bloc<ApiEvent, ApiState> {
             await _moviesManager.getSuggestedMoviesList();
         emit(SuggestedMoviesLoadedState(suggestedMoviesData3: moviesDatas));
       } catch (e) {
-        emit(ErrorState(message: e.toString()));
+        emit(SuggestedMoviesErrorState(message: e.toString()));
       }
     });
   }

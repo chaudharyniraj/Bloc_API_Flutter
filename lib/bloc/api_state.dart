@@ -1,5 +1,3 @@
-import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
-import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_model.dart';
 import 'package:api_bloc_flutter/Model/resource_model.dart';
 import 'package:api_bloc_flutter/Model/user_model.dart';
 
@@ -34,19 +32,5 @@ class ResponseState extends ApiState {
   String token;
   ResponseState({
     required this.token,
-  });
-}
-
-class Movies3DLoadedState extends ApiState {
-  List<MoviesModel> moviesData3D;
-  Movies3DLoadedState({
-    required this.moviesData3D,
-  });
-}
-
-class SuggestedMoviesLoadedState extends ApiState {
-  List<SuggestedMoviesModel> suggestedMoviesData3;
-  SuggestedMoviesLoadedState({
-    required this.suggestedMoviesData3,
   });
 }

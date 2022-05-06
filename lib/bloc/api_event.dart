@@ -19,7 +19,3 @@ class RegisterEvent extends ApiEvent {
 }
 
 class ResponseEvent extends ApiEvent {}
-
-class MoviesEvent3D extends ApiEvent {}
-
-class SuggestedMoviesEvent extends ApiEvent {}

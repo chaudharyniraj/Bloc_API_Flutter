@@ -47,7 +47,9 @@ backgroundImage(MoviesModel movieDetails, context) {
 
 buildMovieDetailsWidget(BuildContext context, MoviesModel movieDetails) {
   TextStyle _textStyleInsideStack = const TextStyle(
-      color: Colors.cyanAccent, fontWeight: FontWeight.bold, fontSize: 16);
+      color: Colors.lightGreenAccent,
+      fontWeight: FontWeight.bold,
+      fontSize: 16);
   TextStyle _textStyleOutsideStack = const TextStyle(
       color: Colors.blueGrey, fontWeight: FontWeight.bold, fontSize: 16);
   return Column(
