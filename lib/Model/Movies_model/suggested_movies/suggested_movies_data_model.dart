@@ -15,10 +15,10 @@ class SuggestedMoviesHeaderModel {
   static const String k_movies = "movies";
 
   SuggestedMoviesHeaderModel.fromJson(Map<String, dynamic> json) {
-    movie_count = json["movie_count"];
-    if (json["movies"] != null) {
+    movie_count = json[k_movie_count];
+    if (json[k_movies] != null) {
       movies = <SuggestedMoviesModel>[];
-      json["movies"].forEach((value) {
+      json[k_movies].forEach((value) {
         movies.add(SuggestedMoviesModel.fromJson(value));
       });
     }

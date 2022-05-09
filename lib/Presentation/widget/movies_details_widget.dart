@@ -119,17 +119,7 @@ buildMovieDetailsWidget(BuildContext context, MoviesModel movieDetails) {
               "Uploaded Date: ${movieDetails.date_uploaded}",
               style: _textStyleOutsideStack,
             ),
-            MaterialButton(
-              onPressed: () {},
-              color: Colors.greenAccent,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text("Torrents"),
-                  Icon(Icons.download),
-                ],
-              ),
-            ),
+            buildTorrentsDownloadWidget(movieDetails),
             const Text(
               "Details",
               style: TextStyle(
@@ -145,4 +135,40 @@ buildMovieDetailsWidget(BuildContext context, MoviesModel movieDetails) {
       ),
     ],
   );
+}
+
+buildTorrentsDownloadWidget(MoviesModel movieDetails) {
+  return ListView.builder(
+      shrinkWrap: true,
+      itemCount: movieDetails.torrents.length,
+      itemBuilder: (context, index) {
+        return Card(
+            color: Colors.limeAccent,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Quality: ${movieDetails.torrents[index].quality}"),
+                      Text("Type: ${movieDetails.torrents[index].type}"),
+                      Text("Seeds: ${movieDetails.torrents[index].seeds}"),
+                      Text("Peers: ${movieDetails.torrents[index].peers}"),
+                      Text("Size: ${movieDetails.torrents[index].size}"),
+                      Text(
+                          "Date Uploaded ${movieDetails.torrents[index].date_uploaded}")
+                    ],
+                  ),
+                ),
+                IconButton(
+                    onPressed: () async {
+                      movieDetails.torrents[index].url;
+                    },
+                    color: Colors.green,
+                    icon: const Icon(Icons.download))
+              ],
+            ));
+      });
 }

@@ -25,8 +25,8 @@ class _MoviesWidgetState extends State<MoviesWidget> {
   @override
   void initState() {
     suggestedMoviesBloc.add(SuggestedMoviesLoadedEvent());
-    moviesListBloc.add(MoviesEvent());
-    movies3dBloc.add(MoviesEvent3D());
+    moviesListBloc.add(MoviesListLoadedEvent());
+    movies3dBloc.add(Movies3dLoadedEvent());
     super.initState();
   }
 

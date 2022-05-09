@@ -8,9 +8,6 @@ class MoviesDetailsBloc extends Bloc<MoviesEvent, MoviesState> {
   final MoviesManager _moviesManager = MoviesManager();
   MoviesDetailsBloc() : super(InitialState()) {
     on<MovieDetailsEvent>((event, emit) async {
-      // if(event is MovieDetailsEvent){
-
-      // }
       int id = event.id;
 
       try {

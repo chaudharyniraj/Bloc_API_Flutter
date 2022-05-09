@@ -13,7 +13,7 @@ class SuggestedMoviesBloc
       try {
         List<SuggestedMoviesModel> moviesDatas =
             await _moviesManager.getSuggestedMoviesList();
-        emit(SuggestedMoviesLoadedState(suggestedMoviesData3: moviesDatas));
+        emit(SuggestedMoviesLoadedState(suggestedMovies: moviesDatas));
       } catch (e) {
         emit(SuggestedMoviesErrorState(message: e.toString()));
       }

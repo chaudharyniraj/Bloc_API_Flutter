@@ -12,9 +12,9 @@ class SuggectedMoviesWidget extends StatelessWidget {
       body: BlocBuilder<SuggestedMoviesBloc, SuggestedMoviesState>(
           builder: ((context, state) {
         if (state is SuggestedMoviesErrorState) {
-          // return Text(state.message);
+          return Text(state.message);
         } else if (state is SuggestedMoviesLoadedState) {
-          return Text(state.suggestedMoviesData3.toString());
+          return const Text("hey");
         }
         return const Center(child: CircularProgressIndicator());
       })),

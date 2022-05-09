@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:api_bloc_flutter/Model/Movies_model/movies_model.dart';
-import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_header_model.dart';
+import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_data_model.dart';
 import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_model.dart';
 import 'package:api_bloc_flutter/Utils/movies_base_url.dart';
 import 'package:api_bloc_flutter/Utils/movies_server_utils.dart';

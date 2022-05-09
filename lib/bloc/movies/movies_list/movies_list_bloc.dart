@@ -8,7 +8,7 @@ import '../../../UrlManager/movies_manager.dart';
 class MoviesListBloc extends Bloc<MoviesListEvent, MoviesListState> {
   final MoviesManager _moviesManager = MoviesManager();
   MoviesListBloc() : super(InitialState()) {
-    on<MoviesEvent>((event, emit) async {
+    on<MoviesListLoadedEvent>((event, emit) async {
       try {
         List<MoviesModel> moviesDatas = await _moviesManager.getMoviesList();
         emit(MoviesLoadedState(moviesData: moviesDatas));

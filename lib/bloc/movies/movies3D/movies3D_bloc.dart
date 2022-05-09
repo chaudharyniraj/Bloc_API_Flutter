@@ -10,7 +10,7 @@ import '../../../UrlManager/movies_manager.dart';
 class Movies3DBloc extends Bloc<Movies3DEvent, Movies3DState> {
   final MoviesManager _moviesManager = MoviesManager();
   Movies3DBloc() : super(InitialState()) {
-    on<MoviesEvent3D>((event, emit) async {
+    on<Movies3dLoadedEvent>((event, emit) async {
       try {
         List<MoviesModel> moviesDatas3D =
             await _moviesManager.getMoviesList3D();

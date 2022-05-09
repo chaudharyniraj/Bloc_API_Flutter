@@ -5,4 +5,4 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class Movies3DEvent {}
 
-class MoviesEvent3D extends Movies3DEvent {}
+class Movies3dLoadedEvent extends Movies3DEvent {}

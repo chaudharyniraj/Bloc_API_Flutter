@@ -3,58 +3,58 @@
 import 'package:api_bloc_flutter/Model/Movies_model/torrents_model.dart';
 
 class SuggestedMoviesModel {
-  late int? id;
-  late String? url;
-  late String? imdb_code;
-  late String? title;
-  late String? title_english;
-  late String? title_long;
-  late String? slug;
-  late int? year;
-  late double? rating;
-  late int? runtime;
-  late List? genres;
-  late String? summary;
-  late String? description_full;
-  late String? synopsis;
-  late String? yt_trailer_code;
-  late String? language;
-  late String? mpa_rating;
+  int? id;
+  String? url;
+  String? imdb_code;
+  String? title;
+  String? title_english;
+  String? title_long;
+  String? slug;
+  int? year;
+  double? rating;
+  int? runtime;
+  List? genres;
+  String? summary;
+  String? description_full;
+  String? synopsis;
+  String? yt_trailer_code;
+  String? language;
+  String? mpa_rating;
   late String background_image;
   late String background_image_original;
   late String small_cover_image;
   late String medium_cover_image;
-  late String? state;
+  String? state;
   late List<TorrentModel> torrents;
-  late String? date_uploaded;
-  late int? date_uploaded_unix;
+  String? date_uploaded;
+  int? date_uploaded_unix;
 
   SuggestedMoviesModel({
-    required this.id,
-    required this.url,
-    required this.imdb_code,
-    required this.title,
-    required this.title_english,
-    required this.title_long,
-    required this.slug,
-    required this.year,
-    required this.rating,
-    required this.runtime,
-    required this.genres,
-    required this.summary,
-    required this.description_full,
-    required this.synopsis,
-    required this.yt_trailer_code,
-    required this.language,
-    required this.mpa_rating,
+    this.id,
+    this.url,
+    this.imdb_code,
+    this.title,
+    this.title_english,
+    this.title_long,
+    this.slug,
+    this.year,
+    this.rating,
+    this.runtime,
+    this.genres,
+    this.summary,
+    this.description_full,
+    this.synopsis,
+    this.yt_trailer_code,
+    this.language,
+    this.mpa_rating,
     required this.background_image,
     required this.background_image_original,
     required this.small_cover_image,
     required this.medium_cover_image,
-    required this.state,
+    this.state,
     required this.torrents,
-    required this.date_uploaded,
-    required this.date_uploaded_unix,
+    this.date_uploaded,
+    this.date_uploaded_unix,
   });
 
   static const String k_id = "id";
