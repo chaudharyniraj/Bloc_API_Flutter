@@ -8,7 +8,7 @@ class SuggestedMoviesBloc
     extends Bloc<SuggestedMoviesEvent, SuggestedMoviesState> {
   final MoviesManager _moviesManager = MoviesManager();
   SuggestedMoviesBloc() : super(InitialState()) {
-    on<SuggestedMoviesEvent>((event, emit) async {
+    on<SuggestedMoviesLoadedEvent>((event, emit) async {
       // print('hey');
       try {
         List<SuggestedMoviesModel> moviesDatas =

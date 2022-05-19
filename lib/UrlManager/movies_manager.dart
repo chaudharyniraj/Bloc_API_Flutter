@@ -58,11 +58,11 @@ class MoviesManager extends MoviesBaseUrl {
         .getApiUrl(moviesApiBaseUrl, "movie_suggestions.json?movie_id=10");
     Response response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
-      Map<String, dynamic> datas = jsonDecode(response.body);
-      Map<String, dynamic> data = datas['data'];
+      Map<String, dynamic> responseBody = jsonDecode(response.body);
+      Map<String, dynamic> data = responseBody['data'];
       // log(data['movies'].toString());
       List<SuggestedMoviesModel> movies =
-          SuggestedMoviesHeaderModel.fromJson(data).movies;
+          SuggestedMoviesDataModel.fromJson(data).movies;
       return movies;
     } else {
       throw Exception();

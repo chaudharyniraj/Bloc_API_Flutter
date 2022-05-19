@@ -2,11 +2,11 @@
 
 import 'package:api_bloc_flutter/Model/Movies_model/suggested_movies/suggested_movies_model.dart';
 
-class SuggestedMoviesHeaderModel {
-  late int movie_count;
+class SuggestedMoviesDataModel {
+  late int? movie_count;
   late List<SuggestedMoviesModel> movies;
 
-  SuggestedMoviesHeaderModel({
+  SuggestedMoviesDataModel({
     required this.movie_count,
     required this.movies,
   });
@@ -14,7 +14,7 @@ class SuggestedMoviesHeaderModel {
   static const String k_movie_count = "movie_count";
   static const String k_movies = "movies";
 
-  SuggestedMoviesHeaderModel.fromJson(Map<String, dynamic> json) {
+  SuggestedMoviesDataModel.fromJson(Map<String, dynamic> json) {
     movie_count = json[k_movie_count];
     if (json[k_movies] != null) {
       movies = <SuggestedMoviesModel>[];

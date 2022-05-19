@@ -20,42 +20,14 @@ class SuggestedMoviesModel {
   String? yt_trailer_code;
   String? language;
   String? mpa_rating;
-  late String background_image;
-  late String background_image_original;
-  late String small_cover_image;
-  late String medium_cover_image;
+  String? background_image;
+  String? background_image_original;
+  String? small_cover_image;
+  String? medium_cover_image;
   String? state;
   late List<TorrentModel> torrents;
   String? date_uploaded;
   int? date_uploaded_unix;
-
-  SuggestedMoviesModel({
-    this.id,
-    this.url,
-    this.imdb_code,
-    this.title,
-    this.title_english,
-    this.title_long,
-    this.slug,
-    this.year,
-    this.rating,
-    this.runtime,
-    this.genres,
-    this.summary,
-    this.description_full,
-    this.synopsis,
-    this.yt_trailer_code,
-    this.language,
-    this.mpa_rating,
-    required this.background_image,
-    required this.background_image_original,
-    required this.small_cover_image,
-    required this.medium_cover_image,
-    this.state,
-    required this.torrents,
-    this.date_uploaded,
-    this.date_uploaded_unix,
-  });
 
   static const String k_id = "id";
   static const String k_url = "url";
