@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home:
           // RepositoryProvider(
           //     create: (_) => Manager(), child: const HomePage())
