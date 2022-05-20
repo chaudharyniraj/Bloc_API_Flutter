@@ -37,6 +37,7 @@ dependencies:
   flutter_bloc:
   http:
   fluttertoast: ^8.0.9
+  youtube_player_flutter: ^8.1.0
 
 
 dev_dependencies:

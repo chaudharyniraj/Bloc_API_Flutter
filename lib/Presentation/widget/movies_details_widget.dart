@@ -4,9 +4,14 @@ import 'package:api_bloc_flutter/bloc/movies/movies_details/movies_details_state
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MoviesDetailsWidget extends StatelessWidget {
+class MoviesDetailsWidget extends StatefulWidget {
   const MoviesDetailsWidget({Key? key}) : super(key: key);
 
+  @override
+  State<MoviesDetailsWidget> createState() => _MoviesDetailsWidgetState();
+}
+
+class _MoviesDetailsWidgetState extends State<MoviesDetailsWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,7 +155,7 @@ buildVideoPlayerWidget(context, movieDetails) {
   return showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(content: Text("data"));
+        return AlertDialog(content: Text(movieDetails.yt_trailer_code));
       });
 }
 
